@@ -1,14 +1,27 @@
 import { useParams } from "react-router-dom";
-import products from "../products";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import ButtonLink from "../components/Button/ButtonLink";
 import { Col, Row, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating/Rating";
+import { useEffect, useState } from "react";
 
 const ProductScreen = () => {
+  const [product, setProduct] = useState([]);
   const { id: productId } = useParams();
 
-  const product = products.find((product) => product._id === productId);
+  useEffect(() => {
+    const getProductsData = async () => {
+      try {
+        const res = await fetch(`/api/products/${productId}`);
+        if (!res.ok) throw new Error("Error to fetch");
+        const data = await res.json();
+        setProduct(data);
+      } catch (e) {
+        console.error(e.message);
+      }
+    };
+    getProductsData();
+  }, [productId]);
 
   console.log(product);
 
