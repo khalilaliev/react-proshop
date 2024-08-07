@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Row,
   Col,
@@ -12,15 +12,23 @@ import { useDispatch, useSelector } from "react-redux";
 import Title from "../components/Title/Title";
 import Message from "../components/Message/Message";
 import { FaTrash } from "react-icons/fa6";
-import { addToCard } from "../store/slices/cardSlice";
+import { addToCard, removeFromCart } from "../store/slices/cardSlice";
 
 const CartScreen = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
-  const handleAddToCart = (product, qty) => {
+  const handleAddToCart = async (product, qty) => {
     dispatch(addToCard({ ...product, qty }));
+  };
+
+  const handleRemoveToCart = async (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const handleCheckout = () => {
+    navigate("/login?redirect=/shipping");
   };
 
   return (
@@ -62,7 +70,11 @@ const CartScreen = () => {
                       </Form.Control>
                     </Col>
                     <Col md={2}>
-                      <Button type="button" variant="light">
+                      <Button
+                        type="button"
+                        variant="light"
+                        onClick={() => handleRemoveToCart(item._id)}
+                      >
                         <FaTrash />
                       </Button>
                     </Col>
@@ -87,7 +99,11 @@ const CartScreen = () => {
                 .toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
-              <Button type="button" disabled={cartItems.length === 0}>
+              <Button
+                type="button"
+                disabled={cartItems.length === 0}
+                onClick={handleCheckout}
+              >
                 Proceed to Checkout
               </Button>
             </ListGroup.Item>

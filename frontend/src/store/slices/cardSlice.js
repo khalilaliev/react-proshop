@@ -22,8 +22,12 @@ const cartSlice = createSlice({
       }
       return updatedCard(state);
     },
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter((i) => i._id !== action.payload);
+      return updatedCard(state);
+    },
   },
 });
 
-export const { addToCard } = cartSlice.actions;
+export const { addToCard, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
