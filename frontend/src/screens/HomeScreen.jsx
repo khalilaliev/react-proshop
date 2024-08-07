@@ -3,6 +3,7 @@ import Product from "../components/Product/Product";
 import { useGetProductsQuery } from "../store/slices/productApiSlice";
 import Loader from "../components/Loader/Loader";
 import Message from "../components/Message/Message";
+import Title from "../components/Title/Title";
 
 const HomeScreen = () => {
   const { data: products, isError, isLoading } = useGetProductsQuery();
@@ -17,7 +18,7 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>Latest Products</h1>
+          <Title text="Latest Products" />
           <Row>
             {products.map((item) => (
               <Col key={item._id} sm={12} md={6} lg={4} xl={3}>

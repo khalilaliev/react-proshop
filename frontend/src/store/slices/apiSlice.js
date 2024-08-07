@@ -6,5 +6,6 @@ const baseQuery = fetchBaseQuery({ baseUrl: BASE_URL });
 export const apiSlice = createApi({
   baseQuery: baseQuery,
   tagTypes: ["Product", "Order", "User"],
+  // eslint-disable-next-line no-unused-vars
   endpoints: (builder) => ({}),
 });
