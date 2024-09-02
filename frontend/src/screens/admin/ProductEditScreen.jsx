@@ -78,8 +78,8 @@ const ProductEditScreen = () => {
     try {
       const res = await uploadProductImage(formData).unwrap();
       toast.success(res.message);
-      setImage(res.image); // Устанавливаем путь к изображению
-      console.log(res.image); // Логируем путь изображения в консоли
+      setImage(res.image);
+      console.log(res.image);
     } catch (e) {
       toast.error(e?.data?.message || e.error);
     }
@@ -94,6 +94,7 @@ const ProductEditScreen = () => {
       />
       <FormContainer>
         <h1>Edit Product</h1>
+        {uploadLoading && <Loader />}
         {updateLoading && <Loader />}
         {isLoading ? (
           <Loader />
