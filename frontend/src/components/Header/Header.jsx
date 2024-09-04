@@ -7,6 +7,7 @@ import logo from "../../assets/styles/logo.png";
 import { LinkContainer } from "react-router-bootstrap";
 import { useLogoutMutation } from "../../store/slices/userApiSlice";
 import { logout } from "../../store/slices/authSlice";
+import Search from "../Search/Search";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -36,10 +37,10 @@ const Header = () => {
               ProShop
             </Navbar.Brand>
           </LinkContainer>
-
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <Search />
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart />

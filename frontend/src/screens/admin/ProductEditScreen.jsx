@@ -114,7 +114,7 @@ const ProductEditScreen = () => {
             <Form.Group controlId="price" className="my-2">
               <Form.Label>Price</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="Enter price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}

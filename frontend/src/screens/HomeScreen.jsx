@@ -6,13 +6,27 @@ import Message from "../components/Message/Message";
 import Title from "../components/Title/Title";
 import { useParams } from "react-router-dom";
 import Paginate from "../components/Paginate/Paginate";
+import ButtonLink from "../components/Button/ButtonLink";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const HomeScreen = () => {
-  const { pageNumber } = useParams();
-  const { data, isError, isLoading } = useGetProductsQuery({ pageNumber });
+  const { pageNumber, keyword } = useParams();
+  const { data, isError, isLoading } = useGetProductsQuery({
+    pageNumber,
+    keyword,
+  });
+
+  console.log(data);
 
   return (
     <>
+      {keyword && (
+        <ButtonLink
+          icon={<FaArrowLeftLong />}
+          text="Go back to products"
+          to="/"
+        />
+      )}
       {isLoading ? (
         <Loader />
       ) : isError ? (
@@ -21,7 +35,11 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
-          <Title text="Latest Products" />
+          {keyword ? (
+            <Title text={`Results '${data.products.length}' items:`} />
+          ) : (
+            <Title text="Latest Products" />
+          )}
           <Row>
             {data.products.map((item) => (
               <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
@@ -29,7 +47,11 @@ const HomeScreen = () => {
               </Col>
             ))}
           </Row>
-          <Paginate pages={data.pages} page={data.page} />
+          <Paginate
+            pages={data.pages}
+            page={data.page}
+            keyword={keyword ? keyword : ""}
+          />
         </>
       )}
     </>
