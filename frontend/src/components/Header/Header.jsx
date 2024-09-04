@@ -39,11 +39,14 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav className="ms-auto d-flex justify-content-center align-items-center gap-3">
               <Search />
-              <LinkContainer to="/cart">
+              <LinkContainer
+                className="d-flex align-items-center gap-1"
+                to="/cart"
+              >
                 <Nav.Link>
-                  <FaShoppingCart />
+                  <FaShoppingCart className="fs-4" />
                   Cart
                   {cartItems.length > 0 && (
                     <Badge className="basket-qty" pill bg="danger">

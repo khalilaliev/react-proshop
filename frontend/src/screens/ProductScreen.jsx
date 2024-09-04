@@ -21,6 +21,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCard } from "../store/slices/cardSlice";
 import { toast } from "react-toastify";
+import Meta from "../components/Meta/Meta";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -80,6 +81,7 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={5}>
               <Image src={product.image} alt={product.name} fluid />

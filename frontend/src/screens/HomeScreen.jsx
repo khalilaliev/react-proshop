@@ -9,6 +9,7 @@ import Paginate from "../components/Paginate/Paginate";
 import ButtonLink from "../components/Button/ButtonLink";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import CarouselProducts from "../components/CarouselProducts/CarouselProducts";
+import Meta from "../components/Meta/Meta";
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -38,6 +39,7 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
+          <Meta title="Welcome to proshop" />
           {keyword ? (
             <Title text={`Results '${data.products.length}' items:`} />
           ) : (
