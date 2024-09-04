@@ -34,43 +34,28 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<HomeScreen />} />
-      <Route index={true} path="/product/:id" element={<ProductScreen />} />
-      <Route index={true} path="/cart" element={<CartScreen />} />
-      <Route index={true} path="/login" element={<LoginScreen />} />
-      <Route index={true} path="/register" element={<RegisterScreen />} />
+      <Route path="/page/:pageNumber" element={<HomeScreen />} />
+      <Route path="/product/:id" element={<ProductScreen />} />
+      <Route path="/cart" element={<CartScreen />} />
+      <Route path="/login" element={<LoginScreen />} />
+      <Route path="/register" element={<RegisterScreen />} />
       <Route path="" element={<PrivateRoute />}>
-        <Route index={true} path="/shipping" element={<ShippingScreen />} />
-        <Route index={true} path="/payment" element={<PaymentScreen />} />
-        <Route index={true} path="/placeorder" element={<PlaceOrderScreen />} />
-        <Route index={true} path="/order/:id" element={<OrderScreen />} />
-        <Route index={true} path="/profile" element={<ProfileScreen />} />
+        <Route path="/shipping" element={<ShippingScreen />} />
+        <Route path="/payment" element={<PaymentScreen />} />
+        <Route path="/placeorder" element={<PlaceOrderScreen />} />
+        <Route path="/order/:id" element={<OrderScreen />} />
+        <Route path="/profile" element={<ProfileScreen />} />
       </Route>
       <Route path="" element={<AdminRoute />}>
+        <Route path="/admin/orderlist" element={<OrderListScreen />} />
+        <Route path="/admin/productlist" element={<ProductListScreen />} />
         <Route
-          index={true}
-          path="/admin/orderlist"
-          element={<OrderListScreen />}
-        />
-        <Route
-          index={true}
-          path="/admin/productlist"
+          path="/admin/productlist/:pageNumber"
           element={<ProductListScreen />}
         />
-        <Route
-          index={true}
-          path="/admin/product/:id/edit"
-          element={<ProductEditScreen />}
-        />
-        <Route
-          index={true}
-          path="/admin/userlist"
-          element={<UserListScreen />}
-        />
-        <Route
-          index={true}
-          path="/admin/user/:id/edit"
-          element={<UserEditScreen />}
-        />
+        <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
+        <Route path="/admin/userlist" element={<UserListScreen />} />
+        <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
       </Route>
     </Route>
   )
