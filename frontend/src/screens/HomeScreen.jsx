@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import Paginate from "../components/Paginate/Paginate";
 import ButtonLink from "../components/Button/ButtonLink";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import CarouselProducts from "../components/CarouselProducts/CarouselProducts";
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -20,7 +21,9 @@ const HomeScreen = () => {
 
   return (
     <>
-      {keyword && (
+      {!keyword ? (
+        <CarouselProducts />
+      ) : (
         <ButtonLink
           icon={<FaArrowLeftLong />}
           text="Go back to products"
