@@ -17,4 +17,12 @@ export default defineConfig({
       "/uploads": "http://localhost:5001",
     },
   },
+  resolve: {
+    alias: {
+      "react-bootstrap": "node_modules/react-bootstrap",
+    },
+  },
+  optimizeDeps: {
+    include: ["react-bootstrap"],
+  },
 });
