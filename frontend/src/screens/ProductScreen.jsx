@@ -164,8 +164,8 @@ const ProductScreen = () => {
               </Card>
             </Col>
           </Row>
-          <Row className="review">
-            <Col md={6}>
+          <Row className="review mt-3">
+            <Col md={5}>
               <h2>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant="flush">

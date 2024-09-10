@@ -137,7 +137,8 @@ const OrderScreen = () => {
                   })}
                   {order.isDelivered ? (
                     <Message variant="success">
-                      Delivered on {order.deliveredAt}
+                      Delivered on{" "}
+                      {new Date(order.deliveredAt).toLocaleString()}
                     </Message>
                   ) : (
                     <Message variant="danger">Not delivered yet</Message>
@@ -150,7 +151,9 @@ const OrderScreen = () => {
                     {order.paymentMethod}
                   </p>
                   {order.isPaid ? (
-                    <Message variant="success">Paid on {order.paidAt}</Message>
+                    <Message variant="success">
+                      Paid on {new Date(order.paidAt).toLocaleString()}
+                    </Message>
                   ) : (
                     <Message variant="danger">Not paid yet</Message>
                   )}
