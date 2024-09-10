@@ -1,7 +1,6 @@
 import "./style.css";
 import { Carousel, Image } from "react-bootstrap";
 import { useGetTopProductsQuery } from "../../store/slices/productApiSlice";
-import Loader from "../Loader/Loader";
 import Message from "../Message/Message";
 import { Link } from "react-router-dom";
 
@@ -12,9 +11,7 @@ const CarouselProducts = () => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : error ? (
+      {isLoading ? null : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
         <Carousel pause="hover" className="bg-primary mb-4">
