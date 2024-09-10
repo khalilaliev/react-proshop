@@ -65,9 +65,12 @@ const Header = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <LinkContainer to="/login">
+                <LinkContainer
+                  className="d-flex align-items-center gap-1"
+                  to="/login"
+                >
                   <Nav.Link>
-                    <FaUser />
+                    <FaUser className="fs-5" />
                     Sign in
                   </Nav.Link>
                 </LinkContainer>
